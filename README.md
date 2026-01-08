@@ -145,6 +145,9 @@ sudo apt install -y google-cloud-cli
 #gcloud 설치 확인
 gcloud --version
 
+#gcloud 초기화를 통해 연결 (Y 하면 링크 뜨는데 브라우저에 붙여넣기, 끝나면 프로젝트 번호 고르기)
+gcloud init
+
 #kubectl 설치 (GKE 필수)
 sudo apt install -y kubectl
 kubectl version --client
@@ -253,6 +256,12 @@ The workflow is split into **two main jobs** that run one after another:
 **Cool Detail:** Each image gets tagged with the Git commit SHA. So if something breaks, I know **exactly** which code version caused it!
 
 ```
+mlops-repo 라는 Artifact Registry 저장소 생성
+gcloud artifacts repositories create mlops-repo \
+  --repository-format=docker \
+  --location=asia-northeast3 \
+  --description="MLOps Docker Repository"
+
 #gcloud 로그인 정보를 써서 asia-northeast3-docker.pkg.dev로 Docker 푸시
 gcloud auth configure-docker asia-northeast3-docker.pkg.dev
 
