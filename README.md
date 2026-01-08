@@ -253,9 +253,16 @@ The workflow is split into **two main jobs** that run one after another:
 **Cool Detail:** Each image gets tagged with the Git commit SHA. So if something breaks, I know **exactly** which code version caused it!
 
 ```
-us-central1-docker.pkg.dev/my-project/mlops-test/diabetes-api:a1b2c3d
-                                                                  ↑
-                                          This is the exact commit that was deployed!
+#gcloud 로그인 정보를 써서 asia-northeast3-docker.pkg.dev로 Docker 푸시
+gcloud auth configure-docker asia-northeast3-docker.pkg.dev
+
+docker tag diabetes-api \
+  asia-northeast3-docker.pkg.dev/knu-dayoung08/mlops-repo/diabetes-api:latest
+
+gcloud services enable artifactregistry.googleapis.com
+
+docker push \
+  asia-northeast3-docker.pkg.dev/knu-dayoung08/mlops-repo/diabetes-api:latest
 ```
 
 ### 🎬 Act 2: Deploy & Verify
