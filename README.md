@@ -127,17 +127,13 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io
 
 #sudo 없이 Docker 쓰기
 sudo usermod -aG docker $USER
-```
 
-재시작 하기
+#WSL2(Ubuntu) 재시작 하기
 
-```bash
+#도커 설치 잘 되었는지 테스트 하기
 docker run hello-world
 docker --version
-#도커 설치 잘 되었는지 테스트 하기
-```
 
-```bash
 #Google Cloud CLI (gcloud) 설치 (Google GPG 키)
 curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg \
  | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
