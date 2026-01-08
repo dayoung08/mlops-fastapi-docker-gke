@@ -1,3 +1,8 @@
+원본에서 GCP 사용 초심자 + 한국 리전에 맞게 수정했습니다.
+사실 쿠버네티스라는게 별거 없고, 우선은 남들이 만들어 놓은 것들 챗지피티랑 대화해가면서 익히는게 제일 좋다고 생각합니다.
+GKE(구글에서 쿠버네티스 사용하는 환경) 해당 예제에서 Diabetes Prediction 대신 ML을 수정해서 넣으면 됩니다.
+참 쉽죠?
+
 # 🩺 Diabetes Prediction MLOps Pipeline
 
 <div align="center">
@@ -61,6 +66,9 @@ graph LR
 - Prediction: "High risk" or "Low risk" for diabetes
 
 **The Model:** Trained using scikit-learn (the actual `.pkl` file isn't in the repo for size reasons - it gets loaded from cloud storage)
+=> 이 파일은 train.py의 결과로 나오는 파일임.
+=> 원래는 클라우드에 올려놓고 따로 받게 해야하는 것 맞는데, 그냥 github에 올려버렸음
+=> 나중에 Dockerfile 수정해서 그런 형태로 해야 실무 스타일임.
 
 > 💭 **Fun fact**: The model part was actually the easy bit. The deployment infrastructure? That's where I learned the most!
 
@@ -351,20 +359,23 @@ gcloud container clusters get-credentials diabetes-cluster \
 
 github에서 action 활성화 꼭 할것
 ```
-echo "diabetes_model.pkl" >> .gitignore
+#gcp-key.json는 당연한 얘기지만 github에 업로드 안되는 자격증명 파일임. 무시하게 하겠음.
 echo "gcp-key.json" >> .gitignore
-git rm --cached diabetes_model.pkl 2>/dev/null || true
 git rm --cached gcp-key.json 2>/dev/null || true
 git add .github/workflows/gcp-gke-deploy.yml
 git add .gitignore
 
 #전체 푸시를 한 다음, 깃허브 페이지의 action에서 잘 돌아가는지 볼것
-#참고로 토근 (패스워드 기능) 만들때 클래식으로 해서 워크플로우 체크박스 선택해야함
+#참고로 토큰 (패스워드 기능) 만들때 클래식으로 해서 워크플로우 체크박스 선택해야함
 git push
 
 
 #액션 가보니 노란색으로 원이 돌아가면 push는 됨
-#이제 계속 기다려서 이게 초록이 되는지 보면 됨
+#이제 계속 기다려서 이게 초록이 되는지 보면 되고 초록이 되면
+
+kubectl get svc diabetes-api-service
+#여기서 EXTERNAL-IP가 나오면
+#http://[EXTERNAL-IP]/docs 로 브라우저에서 접속하면 fastapi 화면 나타남.
 ```
 ---
 
