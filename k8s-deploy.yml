@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: diabetes-api
-        image: us-central1-docker.pkg.dev/${PROJECT_ID}/mlops-test/diabetes-api:${IMAGE_TAG}
+        image: ${GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/mlops-test/diabetes-api:${IMAGE_TAG}
         ports:
         - containerPort: 8000
         imagePullPolicy: Always
