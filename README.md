@@ -19,8 +19,6 @@ GKE(구글에서 쿠버네티스 사용하는 환경) 해당 예제에서 Diabet
 
 **Building ML models is cool. But deploying them in production? That's where the real magic happens! ✨**
 
-[Live Demo](#) • [Documentation](#) • [Report Bug](#)
-
 </div>
 
 ---
