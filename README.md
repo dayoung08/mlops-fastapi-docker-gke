@@ -91,6 +91,12 @@ graph LR
 
 ## 🚀 Getting Started
 
+```bash
+sudo apt install -y python3-venv
+python3 -m venv venv
+```
+
+
 ### 🏃‍♂️ Run Locally (Quick Start)
 
 Want to see it in action on your machine? Here's how:
@@ -101,6 +107,7 @@ git clone https://github.com/dayoung08/mlops-fastapi-docker-gke.git
 cd mlops-fastapi-docker-gke
 
 # Install dependencies
+source venv/bin/activate
 pip install -r requirements.txt
 
 # Fire it up!
