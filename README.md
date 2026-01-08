@@ -267,14 +267,37 @@ gcloud artifacts repositories create mlops-repo \
 #gcloud 로그인 정보를 써서 asia-northeast3-docker.pkg.dev로 Docker 푸시
 gcloud auth configure-docker asia-northeast3-docker.pkg.dev
 
+#앞으로 나오는 모든 [GCP_PROJECT_ID] 는 본인의 GCP 프로젝트 명으로 변경
 docker tag diabetes-api \
-  asia-northeast3-docker.pkg.dev/knu-dayoung08/mlops-repo/diabetes-api:latest
+  asia-northeast3-docker.pkg.dev/[GCP_PROJECT_ID]/mlops-repo/diabetes-api:latest
 
 docker push \
-  asia-northeast3-docker.pkg.dev/knu-dayoung08/mlops-repo/diabetes-api:latest
+  asia-northeast3-docker.pkg.dev/[GCP_PROJECT_ID]/mlops-repo/diabetes-api:latest
 ```
 
 ## 🔐 The Secret Sauce (GitHub Secrets)
+
+```
+gcloud iam service-accounts create github-actions \
+  --display-name "GitHub Actions CI/CD"
+
+gcloud projects add-iam-policy-binding [GCP_PROJECT_ID] \
+  --member="serviceAccount:github-actions@[GCP_PROJECT_ID].iam.gserviceaccount.com" \
+  --role="roles/artifactregistry.admin"
+
+gcloud projects add-iam-policy-binding [GCP_PROJECT_ID] \
+  --member="serviceAccount:github-actions@[GCP_PROJECT_ID].iam.gserviceaccount.com" \
+  --role="roles/container.admin"
+
+gcloud projects add-iam-policy-binding [GCP_PROJECT_ID] \
+  --member="serviceAccount:github-actions@[GCP_PROJECT_ID].iam.gserviceaccount.com" \
+  --role="roles/iam.serviceAccountUser"
+
+#JSON 키 파일 생성 (VIP 패스)
+gcloud iam service-accounts keys create gcp-key.json \
+  --iam-account=github-actions@[GCP_PROJECT_ID].iam.gserviceaccount.com
+
+```
 
 For this automation magic to work, I had to tell GitHub how to access Google Cloud. But I'm not crazy enough to put credentials directly in my code! 😅
 
@@ -283,7 +306,7 @@ Here's what I added as **GitHub Secrets** (Settings → Secrets → Actions → 
 | Secret Name      | What It Does                                      | Example Value           |
 |------------------|---------------------------------------------------|-------------------------|
 | `GCP_PROJECT_ID` | Tells GitHub which Google Cloud project to use   | `my-mlops-project-2024` |
-| `GKE_CLUSTER`    | Which Kubernetes cluster to deploy to             | `diabetes-api-cluster`  |
+| `GKE_CLUSTER`    | Which Kubernetes cluster to deploy to             | `diabetes-cluster`  |
 | `GCP_SA_KEY`     | The VIP pass to access everything (JSON encoded) | `eyJhbGc...` (base64)   |
 
 > 🔒 **Security Note:** These secrets are encrypted by GitHub and never appear in logs. Even I can't see them after setting them up!
