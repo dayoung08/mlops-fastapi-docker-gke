@@ -64,11 +64,6 @@ graph LR
 
 > 💭 **Fun fact**: The model part was actually the easy bit. The deployment infrastructure? That's where I learned the most!
 
-
-```bash
-python train.py
-```
-
 ---
 
 ## 📂 How It's Organized
@@ -154,16 +149,13 @@ gcloud --version
 sudo apt install -y kubectl
 kubectl version --client
 
-
 #최종 확인 (이게 다 떠야 함)
 gcloud --version
 docker --version
 git --version
 kubectl version --client
 
-```
-
-```bash
+#가상 환경에서 실행할 것
 sudo apt install -y python3-venv
 python3 -m venv venv
 ```
@@ -181,6 +173,9 @@ cd mlops-fastapi-docker-gke
 # Install dependencies
 source venv/bin/activate
 pip install -r requirements.txt
+
+#학습 py 파일을 켜서 diabetes_model.pkl 파일 생성
+python train.py
 
 # Fire it up!
 uvicorn main:app --reload
