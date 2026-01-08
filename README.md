@@ -341,7 +341,7 @@ gcloud container clusters get-credentials diabetes-cluster \
 
 github에서 action 활성화 꼭 할것
 ```
-#gcp-key.json는 당연한 얘기지만 github에 업로드 안되는 자격증명 파일임. 무시하게 하겠음.
+#gcp-key.json는 당연한 얘기지만 github에 업로드 하면 안되는 자격증명 파일임. 무시하게 하겠음.
 echo "gcp-key.json" >> .gitignore
 git rm --cached gcp-key.json 2>/dev/null || true
 git add .github/workflows/gcp-gke-deploy.yml
