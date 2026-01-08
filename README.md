@@ -256,7 +256,9 @@ The workflow is split into **two main jobs** that run one after another:
 **Cool Detail:** Each image gets tagged with the Git commit SHA. So if something breaks, I know **exactly** which code version caused it!
 
 ```
-mlops-repo 라는 Artifact Registry 저장소 생성
+gcloud services enable artifactregistry.googleapis.com
+
+#mlops-repo 라는 Artifact Registry 저장소 생성
 gcloud artifacts repositories create mlops-repo \
   --repository-format=docker \
   --location=asia-northeast3 \
@@ -267,8 +269,6 @@ gcloud auth configure-docker asia-northeast3-docker.pkg.dev
 
 docker tag diabetes-api \
   asia-northeast3-docker.pkg.dev/knu-dayoung08/mlops-repo/diabetes-api:latest
-
-gcloud services enable artifactregistry.googleapis.com
 
 docker push \
   asia-northeast3-docker.pkg.dev/knu-dayoung08/mlops-repo/diabetes-api:latest
