@@ -64,6 +64,11 @@ graph LR
 
 > 💭 **Fun fact**: The model part was actually the easy bit. The deployment infrastructure? That's where I learned the most!
 
+
+```bash
+curl -O https://raw.githubusercontent.com/cassiasamp/diabetes-analysis/master/diabetes-model.pkl
+```
+
 ---
 
 ## 📂 How It's Organized
@@ -74,6 +79,7 @@ graph LR
 ┃ ┣ 📜 main.py           # The FastAPI magic happens here
 ┃ ┣ 📜 schemas.py        # Request/response validation
 ┃ ┗ 📜 utils.py          # Prediction logic & model loading
+
 ┃
 ┣ 📂 k8s/
 ┃ ┣ 📜 deployment.yaml   # Kubernetes deployment config
