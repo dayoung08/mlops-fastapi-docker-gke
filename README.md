@@ -111,7 +111,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 # Fire it up!
-uvicorn app.main:app --reload
+uvicorn main:app --reload
 ```
 
 Now open your browser and go to: **http://localhost:8000/docs**
