@@ -355,6 +355,14 @@ kubectl get svc diabetes-api-service
 #여기서 EXTERNAL-IP가 나오면
 #http://[EXTERNAL-IP]/docs 로 브라우저에서 접속하면 fastapi 화면 나타남.
 ```
+
+
+GCP 계속 켜두면 돈이 듭니다. 실습 다 되면 끕시다.
+배포한 모든 것을 삭제하고, GKE 클러스터도 지우면 됩니다.
+```
+kubectl delete -f k8s-deploy.yml
+gcloud container clusters delete diabetes-cluster --region asia-northeast3
+```
 ---
 
 ## 🛡️ Why This Setup is Secure AF
