@@ -7,10 +7,10 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-  GCP_REGION: us-central1          # ✅ SET EXPLICITLY (DO NOT LEAVE EMPTY)
+  GCP_REGION: asia-northeast3          # ✅ SET EXPLICITLY (DO NOT LEAVE EMPTY)
   GKE_CLUSTER_NAME: ${{ secrets.GKE_CLUSTER }}
-  IMAGE_NAME: mlops-fastapi
-  ARTIFACT_REPO: mlops-test
+  IMAGE_NAME: diabetes-api
+  ARTIFACT_REPO: mlops-repo
   IMAGE_TAG: ${{ github.sha }}     # ✅ BEST PRACTICE
 
 # -------------------------
