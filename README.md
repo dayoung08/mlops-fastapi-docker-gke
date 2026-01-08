@@ -349,10 +349,11 @@ git push
 #이제 계속 기다려서 이게 초록이 되는지 보면 되고 초록이 되면
 
 kubectl get svc diabetes-api-service
-#여기서 EXTERNAL-IP가 나오면
-#http://[EXTERNAL-IP]/docs 로 브라우저에서 접속하면 fastapi 화면 나타남.
 ```
 
+여기서 EXTERNAL-IP가 나오면
+#http://[EXTERNAL-IP]/docs 로 브라우저에서 접속하면 fastapi 화면 나타남.
+그러면 성공! 프론트엔드랑 연결해서 많은 것을 만들어봅시다.
 
 GCP 계속 켜두면 돈이 듭니다. 실습 다 되면 끕시다.
 ```
