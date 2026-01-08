@@ -97,8 +97,8 @@ Want to see it in action on your machine? Here's how:
 
 ```bash
 # Clone the repo
-git clone https://github.com/yourusername/diabetes-mlops-pipeline.git
-cd diabetes-mlops-pipeline
+git clone https://github.com/dayoung08/mlops-fastapi-docker-gke.git
+cd mlops-fastapi-docker-gke
 
 # Install dependencies
 pip install -r requirements.txt
