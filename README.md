@@ -349,6 +349,23 @@ gcloud container clusters get-credentials diabetes-cluster \
   --region asia-northeast3
 ```
 
+github에서 action 활성화 꼭 할것
+```
+echo "diabetes_model.pkl" >> .gitignore
+echo "gcp-key.json" >> .gitignore
+git rm --cached diabetes_model.pkl 2>/dev/null || true
+git rm --cached gcp-key.json 2>/dev/null || true
+git add .github/workflows/gcp-gke-deploy.yml
+git add .gitignore
+
+#전체 푸시를 한 다음, 깃허브 페이지의 action에서 잘 돌아가는지 볼것
+#참고로 토근 (패스워드 기능) 만들때 클래식으로 해서 워크플로우 체크박스 선택해야함
+git push
+
+
+#액션 가보니 노란색으로 원이 돌아가면 push는 됨
+#이제 계속 기다려서 이게 초록이 되는지 보면 됨
+```
 ---
 
 ## 🛡️ Why This Setup is Secure AF
