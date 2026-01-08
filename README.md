@@ -66,7 +66,7 @@ graph LR
 
 
 ```bash
-curl -O https://raw.githubusercontent.com/cassiasamp/diabetes-analysis/master/diabetes-model.pkl
+python train.py
 ```
 
 ---
