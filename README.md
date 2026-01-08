@@ -69,7 +69,7 @@ graph LR
 ## 📂 How It's Organized
 
 ```
-📦 diabetes-mlops-pipeline
+📦 mlops-fastapi-docker-gke
 ┣ 📂 app/
 ┃ ┣ 📜 main.py           # The FastAPI magic happens here
 ┃ ┣ 📜 schemas.py        # Request/response validation
