@@ -313,14 +313,14 @@ Here's what I added as **GitHub Secrets** (Settings → Secrets → Actions → 
 #GKE를 쓰려면 Kubernetes Engine API를 먼저 켜야 함. 오래 대기할 것
 gcloud services enable container.googleapis.com
 
-#GKE 클러스터 확인. 아직 클러스터 없으면 아무것도 안 
+#GKE 클러스터 확인. 아직 클러스터 없으면 아무것도 안 나옴
 gcloud container clusters list
 
 #GKE 클러스터 생성. 역시 오래 걸리니 대기할 것
 gcloud container clusters create-auto diabetes-cluster \
   --region asia-northeast3
 
-#gcloud 인증 플러그인 설치 및 환경 변수 설
+#gcloud 인증 플러그인 설치 및 환경 변수 설정
 sudo apt-get install -y google-cloud-cli-gke-gcloud-auth-plugin
 gke-gcloud-auth-plugin --version
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
