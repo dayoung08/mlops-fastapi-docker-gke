@@ -293,7 +293,7 @@ gcloud projects add-iam-policy-binding [GCP_PROJECT_ID] \
   --member="serviceAccount:github-actions@[GCP_PROJECT_ID].iam.gserviceaccount.com" \
   --role="roles/iam.serviceAccountUser"
 
-#JSON 키 파일 생성 (VIP 패스) ls 하면 gcp-key.json 생긴게 확인 가
+#JSON 키 파일 생성 (VIP 패스) ls 하면 gcp-key.json 생긴게 확인 가능
 gcloud iam service-accounts keys create gcp-key.json \
   --iam-account=github-actions@[GCP_PROJECT_ID].iam.gserviceaccount.com
 
@@ -337,19 +337,16 @@ gcloud container clusters list
 gcloud container clusters create-auto diabetes-cluster \
   --region asia-northeast3
 
-#kubectl 연결
+#gcloud 인증 플러그인 설치 및 환경 변수 설
+sudo apt-get install -y google-cloud-cli-gke-gcloud-auth-plugin
+gke-gcloud-auth-plugin --version
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+echo 'export USE_GKE_GCLOUD_AUTH_PLUGIN=True' >> ~/.bashrc
+source ~/.bashrc
+
+#GKE 인증 정보 가져오기
 gcloud container clusters get-credentials diabetes-cluster \
   --region asia-northeast3
-
-#확인하고 노드가 나오면 연결 성공
-kubectl get nodes
-
-#배포
-kubectl apply -f k8s-deploy.yml
-
-#상태 확인
-kubectl get pods
-kubectl get svc
 ```
 
 ---
