@@ -65,8 +65,11 @@ graph LR
 - Prediction: "High risk" or "Low risk" for diabetes
 
 **The Model:** Trained using scikit-learn (the actual `.pkl` file isn't in the repo for size reasons - it gets loaded from cloud storage)
+
 => 이 파일은 train.py의 결과로 나오는 파일임.
+
 => 원래는 클라우드에 올려놓고 따로 받게 해야하는 것 맞는데, 그냥 github에 올려버렸음
+
 => 나중에 Dockerfile 수정해서 그런 형태로 해야 실무 스타일임.
 
 > 💭 **Fun fact**: The model part was actually the easy bit. The deployment infrastructure? That's where I learned the most!
