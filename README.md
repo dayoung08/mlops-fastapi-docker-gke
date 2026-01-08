@@ -98,6 +98,76 @@ python train.py
 ## 🚀 Getting Started
 
 ```bash
+#Git 설치
+sudo apt install -y git
+
+#Docker 설치 (필수 패키지)
+sudo apt install -y \
+  ca-certificates \
+  curl \
+  gnupg \
+  lsb-release
+
+#Docker 공식 GPG 키
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
+ | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+#Docker 저장소 추가
+echo \
+  "deb [arch=$(dpkg --print-architecture) \
+  signed-by=/etc/apt/keyrings/docker.gpg] \
+  https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" \
+ | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+#Docker 설치
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io
+
+#sudo 없이 Docker 쓰기
+sudo usermod -aG docker $USER
+```
+
+재시작 하기
+
+```bash
+docker run hello-world
+docker --version
+#도커 설치 잘 되었는지 테스트 하기
+```
+
+```bash
+#Google Cloud CLI (gcloud) 설치 (Google GPG 키)
+curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg \
+ | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
+
+#gcloud 저장소 추가
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] \
+https://packages.cloud.google.com/apt cloud-sdk main" \
+ | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
+
+#gcloud 설치
+sudo apt update
+sudo apt install -y google-cloud-cli
+
+#gcloud 설치 확인
+gcloud --version
+
+#kubectl 설치 (GKE 필수)
+sudo apt install -y kubectl
+kubectl version --client
+
+
+#최종 확인 (이게 다 떠야 함)
+gcloud --version
+docker --version
+git --version
+kubectl version --client
+
+```
+
+```bash
 sudo apt install -y python3-venv
 python3 -m venv venv
 ```
