@@ -294,7 +294,7 @@ gcloud services enable container.googleapis.com
 #GKE 클러스터 확인. 아직 클러스터 없으면 아무것도 안 
 gcloud container clusters list
 
-#GKE 클러스터 생성
+#GKE 클러스터 생성. 역시 오래 걸리니 대기할 것
 gcloud container clusters create-auto diabetes-cluster \
   --region asia-northeast3
 
@@ -311,12 +311,6 @@ kubectl apply -f k8s-deploy.yml
 #상태 확인
 kubectl get pods
 kubectl get svc
-
-
-
-kubectl rollout status deployment/diabetes-api
-# It literally watches: "Waiting for deployment to complete... 1 of 3 updated replicas..."
-# Only marks as ✅ when everything is confirmed working
 ```
 
 ---
