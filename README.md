@@ -362,13 +362,7 @@ kubectl get svc diabetes-api-service
 #http://[EXTERNAL-IP]/docs 로 브라우저에서 접속하면 fastapi 화면 나타남.
 그러면 성공! 프론트엔드랑 연결해서 많은 것을 만들어봅시다.
 
-GCP 계속 켜두면 돈이 듭니다. 실습 다 되면 끕시다.
-```
-#배포한 것을 삭제(실습 다 했으니까!)
-kubectl delete -f k8s-deploy.yml
-#클러스터도 삭제하고 싶으면 삭제
-gcloud container clusters delete diabetes-cluster --region asia-northeast3
-```
+
 ---
 
 ## 🛡️ Why This Setup is Secure AF
@@ -440,6 +434,14 @@ kubectl get service diabetes-api-service
 - Image tag mismatch
 - Resource limits too low
 
+---
+GCP 계속 켜두면 돈이 듭니다. 실습 다 되면 끕시다.
+```
+#배포한 것을 삭제(실습 다 했으니까!)
+kubectl delete -f k8s-deploy.yml
+#클러스터도 삭제하고 싶으면 삭제
+gcloud container clusters delete diabetes-cluster --region asia-northeast3
+```
 ---
 
 ## 💡 What I Learned Building This
