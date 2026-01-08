@@ -355,9 +355,10 @@ kubectl get svc diabetes-api-service
 
 
 GCP 계속 켜두면 돈이 듭니다. 실습 다 되면 끕시다.
-배포한 모든 것을 삭제하고, GKE 클러스터도 지우면 됩니다.
 ```
+#배포한 것을 삭제
 kubectl delete -f k8s-deploy.yml
+#클러스터도 삭제
 gcloud container clusters delete diabetes-cluster --region asia-northeast3
 ```
 ---
