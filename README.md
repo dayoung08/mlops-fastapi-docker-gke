@@ -74,30 +74,6 @@ graph LR
 
 ---
 
-## 📂 How It's Organized
-
-```
-📦 mlops-fastapi-docker-gke
-┣ 📂 app/
-┃ ┣ 📜 main.py           # The FastAPI magic happens here
-┃ ┣ 📜 schemas.py        # Request/response validation
-┃ ┗ 📜 utils.py          # Prediction logic & model loading
-
-┃
-┣ 📂 k8s/
-┃ ┣ 📜 deployment.yaml   # Kubernetes deployment config
-┃ ┗ 📜 service.yaml      # Kubernetes service config
-┃
-┣ 📂 .github/workflows/
-┃ ┗ 📜 ci-cd.yml         # The automation pipeline
-┃
-┣ 🐳 Dockerfile          # Container recipe
-┣ 📋 requirements.txt    # Python dependencies
-┗ 📖 README.md           # You are here!
-```
-
----
-
 ## 🚀 Getting Started
 
 ```bash
