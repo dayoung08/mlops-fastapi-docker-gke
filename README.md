@@ -274,6 +274,22 @@ docker push \
   asia-northeast3-docker.pkg.dev/knu-dayoung08/mlops-repo/diabetes-api:latest
 ```
 
+## 🔐 The Secret Sauce (GitHub Secrets)
+
+For this automation magic to work, I had to tell GitHub how to access Google Cloud. But I'm not crazy enough to put credentials directly in my code! 😅
+
+Here's what I added as **GitHub Secrets** (Settings → Secrets → Actions):
+
+| Secret Name      | What It Does                                      | Example Value           |
+|------------------|---------------------------------------------------|-------------------------|
+| `GCP_PROJECT_ID` | Tells GitHub which Google Cloud project to use   | `my-mlops-project-2024` |
+| `GKE_CLUSTER`    | Which Kubernetes cluster to deploy to             | `diabetes-api-cluster`  |
+| `GCP_SA_KEY`     | The VIP pass to access everything (JSON encoded) | `eyJhbGc...` (base64)   |
+
+> 🔒 **Security Note:** These secrets are encrypted by GitHub and never appear in logs. Even I can't see them after setting them up!
+
+---
+
 ### 🎬 Act 2: Deploy & Verify
 
 **What's happening:** Taking that shiny new container and deploying it to Kubernetes
@@ -312,22 +328,6 @@ kubectl apply -f k8s-deploy.yml
 kubectl get pods
 kubectl get svc
 ```
-
----
-
-## 🔐 The Secret Sauce (GitHub Secrets)
-
-For this automation magic to work, I had to tell GitHub how to access Google Cloud. But I'm not crazy enough to put credentials directly in my code! 😅
-
-Here's what I added as **GitHub Secrets** (Settings → Secrets → Actions):
-
-| Secret Name      | What It Does                                      | Example Value           |
-|------------------|---------------------------------------------------|-------------------------|
-| `GCP_PROJECT_ID` | Tells GitHub which Google Cloud project to use   | `my-mlops-project-2024` |
-| `GKE_CLUSTER`    | Which Kubernetes cluster to deploy to             | `diabetes-api-cluster`  |
-| `GCP_SA_KEY`     | The VIP pass to access everything (JSON encoded) | `eyJhbGc...` (base64)   |
-
-> 🔒 **Security Note:** These secrets are encrypted by GitHub and never appear in logs. Even I can't see them after setting them up!
 
 ---
 
