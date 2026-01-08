@@ -293,7 +293,7 @@ gcloud projects add-iam-policy-binding [GCP_PROJECT_ID] \
   --member="serviceAccount:github-actions@[GCP_PROJECT_ID].iam.gserviceaccount.com" \
   --role="roles/iam.serviceAccountUser"
 
-#JSON 키 파일 생성 (VIP 패스)
+#JSON 키 파일 생성 (VIP 패스) ls 하면 gcp-key.json 생긴게 확인 가
 gcloud iam service-accounts keys create gcp-key.json \
   --iam-account=github-actions@[GCP_PROJECT_ID].iam.gserviceaccount.com
 
@@ -307,7 +307,7 @@ Here's what I added as **GitHub Secrets** (Settings → Secrets → Actions → 
 |------------------|---------------------------------------------------|-------------------------|
 | `GCP_PROJECT_ID` | Tells GitHub which Google Cloud project to use   | `my-mlops-project-2024` |
 | `GKE_CLUSTER`    | Which Kubernetes cluster to deploy to             | `diabetes-cluster`  |
-| `GCP_SA_KEY`     | The VIP pass to access everything (JSON encoded) | `eyJhbGc...` (base64)   |
+| `GCP_SA_KEY`     | The VIP pass to access everything (JSON encoded) | `gcp-key.json 파일 전체 복붙` |
 
 > 🔒 **Security Note:** These secrets are encrypted by GitHub and never appear in logs. Even I can't see them after setting them up!
 
