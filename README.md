@@ -288,6 +288,32 @@ docker push \
 **The Safety Net:** The pipeline actually **waits and watches** to make sure the deployment succeeds. If something goes wrong, the workflow fails and I get notified. No silent failures here!
 
 ```bash
+#GKE를 쓰려면 Kubernetes Engine API를 먼저 켜야 함. 오래 대기할 것
+gcloud services enable container.googleapis.com
+
+#GKE 클러스터 확인. 아직 클러스터 없으면 아무것도 안 
+gcloud container clusters list
+
+#GKE 클러스터 생성
+gcloud container clusters create-auto diabetes-cluster \
+  --region asia-northeast3
+
+#kubectl 연결
+gcloud container clusters get-credentials diabetes-cluster \
+  --region asia-northeast3
+
+#확인하고 노드가 나오면 연결 성공
+kubectl get nodes
+
+#배포
+kubectl apply -f k8s-deploy.yml
+
+#상태 확인
+kubectl get pods
+kubectl get svc
+
+
+
 kubectl rollout status deployment/diabetes-api
 # It literally watches: "Waiting for deployment to complete... 1 of 3 updated replicas..."
 # Only marks as ✅ when everything is confirmed working
