@@ -278,7 +278,7 @@ docker push \
 
 For this automation magic to work, I had to tell GitHub how to access Google Cloud. But I'm not crazy enough to put credentials directly in my code! 😅
 
-Here's what I added as **GitHub Secrets** (Settings → Secrets → Actions):
+Here's what I added as **GitHub Secrets** (Settings → Secrets → Actions → New repository secret):
 
 | Secret Name      | What It Does                                      | Example Value           |
 |------------------|---------------------------------------------------|-------------------------|
