@@ -2,6 +2,10 @@
 
 GKE(구글에서 쿠버네티스 사용하는 환경) 해당 예제에서 Diabetes Prediction 대신 ML을 수정해서 넣으면서 MLOps를 익히면 좋을 것 같습니다.
 
+다만 이 예시의 경우는 "추론" 만 자동화 한 케이스입니다.
+
+많은 MLOps 서비스의 경우, 모델 성능 감시 및 데이터 변화에 따른 재학습도 수행이 되는 편이지만 여기서는 다루지 않았습니다.
+
 
 
 # 🩺 Diabetes Prediction MLOps Pipeline
